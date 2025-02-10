@@ -1,0 +1,25 @@
+<h1>This is <%= @restaurant.name %></h1>
+
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.phone_number %></p>
+<p><%= @restaurant.category %></p>
+
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li>
+      <%= "#{review.content} - #{review.rating} 🌟" %>
+    </li>
+  <% end %>
+</ul>
+
+<%#  link_to "Add a review", new_restaurant_review_path(@restaurant) %>
+
+<h2>Write a review!</h2>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render "reviews/form_reviews", restaurant: @restaurant, review: @review %>
+  </div>
+</div>
+
+<%= link_to "Back", restaurants_path %>
